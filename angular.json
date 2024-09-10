@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "sala_de_juegos": {
+    "sala-de-juegos": {
       "projectType": "application",
       "schematics": {},
       "root": "",
