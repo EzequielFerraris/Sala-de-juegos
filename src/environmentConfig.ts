@@ -1,4 +1,4 @@
-let environment = {apiKey: "AIzaSyABPOCdGBEobwP20rG9X3zXDGlCFS71BBs",
+export const environment = {apiKey: "AIzaSyABPOCdGBEobwP20rG9X3zXDGlCFS71BBs",
     authDomain: "prueba1-7bc74.firebaseapp.com",
     projectId: "prueba1-7bc74",
     storageBucket: "prueba1-7bc74.appspot.com",
