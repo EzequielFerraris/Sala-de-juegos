@@ -25,20 +25,35 @@
 
           <div [ngClass]="{'hidden': !estadoMenu, 'flex': estadoMenu}" class="lg:flex lg:flex-grow items-center">
 
-            <ul class="flex flex-col lg:flex-row list-none ml-auto">
+            <ul class="flex flex-col lg:flex-row list-none ml-auto pt-4 lg:pt-0">
 
-              <li class="nav-item">
-                <a class="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-secundario-naranja hover:text-secundario-blanco" href="home">
-                  <span class="ml-2">Juegos</span>
-                </a>
-              </li>
-
-              <li class="nav-item">
-                <button class="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-secundario-naranja hover:text-secundario-blanco" (click)="log_button()">
-                  <ng-container *ngIf="logged">Salir</ng-container>
-                  <ng-container *ngIf="!logged">Ingresar</ng-container>
-                </button>
-              </li>
+                  @if(mailUsuario)
+                  {
+                    <li class="nav-item">
+                      <a class="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-secundario-naranja hover:text-secundario-blanco" href="home">
+                        <span class="ml-2">{{ mailUsuario }}</span>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <button class="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-secundario-naranja hover:text-secundario-blanco" (click)="log_out()">
+                        <span class="ml-2">Salir</span>
+                      </button>
+                    </li>
+                  }
+                  @else 
+                  {
+                    <li class="nav-item">
+                      <a class="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-secundario-naranja hover:text-secundario-blanco" href="home">
+                        <span class="ml-2">Juegos</span>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <button class="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-secundario-naranja hover:text-secundario-blanco" (click)="log_button()">
+                        <span class="ml-2">Ingresar</span>
+                      </button>
+                    </li>
+                    
+                  }
 
               <li class="nav-item">
                 <a class="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-secundario-naranja hover:text-secundario-blanco" href="quien-soy">

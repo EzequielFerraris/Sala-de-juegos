@@ -21,9 +21,9 @@
                                 <input
                                 type="email"
                                 class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
-                                placeholder="Email" 
-                                required
-                                [(ngModel)]="input_mail"/>
+                                placeholder="Email"
+                                [(ngModel)]="input_mail"
+                                email/>
 
                             </div>
 
@@ -36,44 +36,30 @@
                                 type="password"
                                 class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
                                 placeholder="Password"
-                                required
                                 [(ngModel)]="input_pass"/>
-                            </div>
 
-                            <div>
-
-                                <label class="inline-flex items-center cursor-pointer">
-                                    <input
-                                    id="customCheckLogin"
-                                    type="checkbox"
-                                    class="form-checkbox border-0 rounded text-gray-800 ml-1 w-5 h-5"/> 
-                                    <span class="ml-2 text-sm font-semibold text-gray-700">Recordarme</span></label>
-                            
                             </div>
 
                             <div class="text-center mt-6">
                                 <button
                                     class="bg-gray-900 text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full"
-                                    (click)="login()"
+                                    (click)="registrar()"
                                     type="button">
-                                    Ingresar
+                                    Registrarse
                                 </button>
                             </div>
                         <!-- final-formulario-->
 
-                        <div class="flex flex-wrap mt-6">
-                            <div class="w-1/2">
-                                <button class="text-principal-azul" (click)="autocompletar()"><small>INGRESAR MODO PRUEBA</small></button>
-                            </div>
-                            <div class="w-1/2 text-right">
-                                <a href="registro" class="text-principal-azul"><small>Crear una nueva cuenta</small></a>
-                            </div>
+                        <div class="ml-auto mr-auto mt-3 text-center">
+                                <div>
+                                    <a href="login" class="text-principal-azul"><small>Ya tengo una cuenta</small></a>
+                                </div>
                         </div>
                     </div>
                 </div>
-            
+
+                
             </div>
         </div>   
     </div>
 </section>
-    

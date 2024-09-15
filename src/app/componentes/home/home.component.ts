@@ -16,11 +16,11 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons';
 })
 export class HomeComponent {
 
-
   constructor(library: FaIconLibrary)
   {
     library.addIcons(faFaceDizzy, faQuestion, faPlusMinus, faHeart)
   }
+
 
   
 }

@@ -1,77 +1,88 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { FormsModule, NgModel } from '@angular/forms';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { RouterOutlet, Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2'; 
+import { CommonModule } from '@angular/common';
+import { Auth, signInWithEmailAndPassword, signOut} from '@angular/fire/auth';
+import { addDoc, collection, Firestore } from '@angular/fire/firestore';
 import Swal from 'sweetalert2';
+import { AppComponent } from '../../app.component';
+
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [RouterOutlet, FormsModule, SweetAlert2Module],
+  imports: [RouterOutlet, FormsModule, SweetAlert2Module, CommonModule, AppComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  private valid_user: string = "user123";
-  private valid_pass: string = "123";
+  @Output() enviarUsuario = new EventEmitter<string>();
   public input_mail: string = "";
   public input_pass: string = "";
 
-  campo_respuesta(campo: number): void
+  constructor(public auth: Auth, 
+              private router: Router,
+              private firestore: Firestore){ }
+
+  //BOTON DE AUTOCOMPLETADO
+  autocompletar()
   {
-    switch(campo)
-    {
-      case 1:
+    this.input_mail = "usuario@prueba.com";
+    this.input_pass = "123qwe";
+  }
+
+  //FUNCION LOGIN
+  login()
+  {
+    //LOGIN FIREBASE
+    signInWithEmailAndPassword(this.auth, this.input_mail, this.input_pass).then((res) => {
+
+      if(res.user.email !== null) 
+      {
+
+        //CAPTURAR EL LOG DEL USUARIO
+        let col = collection(this.firestore, 'logs');
+        addDoc(col, {fecha: new Date(), user: res.user.email});
+
+        //GUARDO USUARIO EN LOCAL STORAGE PARA EVITAR EL DELAY DE FIREBASE
+        localStorage.setItem('mailUsuario', res.user.email);
+
+        //ALERTA + REDIRECT + RELOAD 
         Swal.fire(
           {
-            title: '¡Bienvenido!',
+            title: '¡Bienvenido ' + res.user.email + '!',
             text: 'Ha ingresado correctamente.',
             icon: 'success',
             confirmButtonText: 'Ok'
-          });
-      break;
-      case 2:
-        Swal.fire(
+          }).then(() => {
+              this.router.navigate(['home']).then(()=> 
+                {window.location.reload()})});
+      }
+    }).catch((e) => { 
+      //TOMA EL MENSAJE DE ERROR
+      let mensaje = ''; 
+        switch(e.code)
         {
-          title: 'Error',
-          text: 'Usuario y/o password incorrectos.',
-          icon: 'error',
-          confirmButtonText: 'Ok'
-        });    
-      break;
-      case 3:
+          case "auth/invalid-credential":
+            mensaje = "Usuario o contraseña incorrecta.";
+          break;
+          case "auth/invalid-email":
+            mensaje = "Correo electrónico inválido.";
+          break;
+          default:
+            mensaje = e.code;
+          break;
+        }
         Swal.fire(
           {
             title: 'Error',
-            text: 'Falta uno de los campos requeridos.',
+            text: mensaje,
             icon: 'error',
             confirmButtonText: 'Ok'
-          });
-      break;
-    }
+          });    
+    });
+
   }
-
-
-  login(): void
-  {
-
-    if(this.input_mail == "" || this.input_pass =="")
-    {
-      this.campo_respuesta(3);
-    }
-    else
-    {
-      if(this.input_mail == this.valid_user && this.input_pass == this.valid_pass)
-      {
-        this.campo_respuesta(1);
-      }
-      else
-      {
-        this.campo_respuesta(2);
-      }
-    }
-  }
-
   
-
 }
