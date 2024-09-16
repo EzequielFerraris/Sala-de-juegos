@@ -54,7 +54,10 @@ export class LoginComponent {
             title: '¡Bienvenido ' + res.user.email + '!',
             text: 'Ha ingresado correctamente.',
             icon: 'success',
-            confirmButtonText: 'Ok'
+            iconColor: '#FF00C1',
+            confirmButtonText: "<p style='color:#000000'> Ok </p>",
+            confirmButtonColor: '#00FFEB',
+            background: '#FFFFFF'
           }).then(() => {
               this.router.navigate(['home']).then(()=> 
                 {window.location.reload()})});
@@ -79,7 +82,10 @@ export class LoginComponent {
             title: 'Error',
             text: mensaje,
             icon: 'error',
-            confirmButtonText: 'Ok'
+            iconColor: '#FF00C1',
+            confirmButtonText: "<p style='color:#000000'> Ok </p>",
+            confirmButtonColor: '#00FFEB',
+            background: '#FFFFFF'
           });    
     });
 

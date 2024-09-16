@@ -33,7 +33,9 @@ export class RegistrarComponent {
                 title: '¡Bienvenido ' + this.logged_user + '!' ,
                 text: 'Ha creado un usuario correctamente.',
                 icon: 'success',
-                confirmButtonText: 'Ok'
+                iconColor: '#FF00C1',
+                confirmButtonText: 'Ok',
+                confirmButtonColor: '#00FFEB'
               });
             this.router.navigate(['home']);
           }).catch((e) => {
@@ -42,7 +44,9 @@ export class RegistrarComponent {
                 title: 'Error',
                 text: e.mensaje,
                 icon: 'error',
-                confirmButtonText: 'Ok'
+                iconColor: '#FF00C1',
+                confirmButtonText: 'Ok',
+                confirmButtonColor: '#00FFEB'
               });    
           }
           );
@@ -66,7 +70,9 @@ export class RegistrarComponent {
             title: 'Error',
             text: mensaje,
             icon: 'error',
-            confirmButtonText: 'Ok'
+            iconColor: '#FF00C1',
+            confirmButtonText: 'Ok',
+            confirmButtonColor: '#00FFEB'
           });    
       })
     }
@@ -77,7 +83,9 @@ export class RegistrarComponent {
           title: 'Error',
           text: 'Alguno de los campos no cumple con los requisitos.',
           icon: 'error',
-          confirmButtonText: 'Ok'
+          iconColor: '#FF00C1',
+          confirmButtonText: 'Ok',
+          confirmButtonColor: '#00FFEB'
         });    
     }
   }
