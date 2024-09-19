@@ -59,10 +59,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "sala_de_juegos:build:production"
+              "buildTarget": "sala-de-juegos:build:production"
             },
             "development": {
-              "buildTarget": "sala_de_juegos:build:development"
+              "buildTarget": "sala-de-juegos:build:development"
             }
           },
           "defaultConfiguration": "development"

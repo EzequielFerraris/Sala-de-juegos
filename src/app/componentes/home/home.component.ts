@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faFaceDizzy } from '@fortawesome/free-solid-svg-icons';
@@ -10,7 +9,7 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'home',
   standalone: true,
-  imports: [RouterOutlet, FontAwesomeModule],
+  imports: [FontAwesomeModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

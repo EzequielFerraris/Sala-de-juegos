@@ -5,6 +5,7 @@ import { LoginComponent } from './componentes/login/login.component';
 import { PageNotFoundComponent } from './componentes/page-not-found/page-not-found.component';
 import { AppComponent } from './app.component';
 import { RegistrarComponent } from './componentes/registrar/registrar.component';
+import { ChatComponent } from './componentes/chat/chat.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: "full" },
@@ -12,6 +13,7 @@ export const routes: Routes = [
     { path: 'quien-soy', component: QuienSoyComponent },
     { path: 'login', component: LoginComponent },
     { path: 'registro', component: RegistrarComponent },
+    { path: 'chat', component: ChatComponent },
     { path: 'juegos',
         loadChildren: () => import('./modules/juegos/juegos.module').then(m => m.JuegosModule)
     },
