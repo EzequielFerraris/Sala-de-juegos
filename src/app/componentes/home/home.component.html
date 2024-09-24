@@ -30,9 +30,16 @@
                             <div class="text-blanco p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-fucsia">
                                 <fa-icon [icon]="['fas', 'face-dizzy']"></fa-icon>
                             </div>
-                            <h6 class="text-xl font-semibold font-pixelify">Ahorcado</h6>
+                            @if(usuario)
+                            {
+                                <h6 class="text-4xl font-semibold font-pixelify text-violeta hover:text-negro"><a href="juegos/ahorcado">Ahorcado</a></h6>
+                            }
+                            @else {
+                                <h6 class="text-4xl font-semibold font-pixelify text-violeta hover:text-negro"><a href="login">Ahorcado</a></h6>
+                            }
+                            
                             <p class="mt-2 mb-4 text-gray-600">
-                                El clásico juego de descubrir una palabra antes de morir en la horca. 
+                                El clásico juego de descubrir una palabra antes de morir en la horca, pero en el Lejano Oeste. 
                                 Prueba tu conocimiento del idioma español con este minijuego.
                             </p>        
                         </div>
@@ -45,7 +52,13 @@
                             <div class="text-blanco p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-fucsia">
                                 <fa-icon [icon]="['fas', 'plus-minus']"></fa-icon>
                             </div>
-                            <h6 class="text-xl font-semibold font-pixelify">Mayor o menor</h6>
+                            @if(usuario)
+                            {
+                                <h6 class="text-4xl font-semibold font-pixelify text-violeta hover:text-negro"><a href="juegos/mayor-menor">Mayor o menor</a></h6>
+                            }
+                            @else {
+                                <h6 class="text-4xl font-semibold font-pixelify text-violeta hover:text-negro"><a href="login">Mayor, menor o igual</a></h6>
+                            }
                             <p class="mt-2 mb-4 text-gray-600">
                                 ¿Lo tuyo son los números y no las palabras complejas? Intenta entonces averiguar el
                                 numero secreto en la menor cantidad de intentos.
@@ -60,7 +73,7 @@
                             <div class="text-blanco p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-fucsia">
                                 <fa-icon [icon]="['fas', 'question']"></fa-icon>
                             </div>
-                            <h6 class="text-xl font-semibold font-pixelify">Preguntados</h6>
+                            <h6 class="text-4xl font-semibold font-pixelify">Preguntados</h6>
                             <p class="mt-2 mb-4 text-gray-600">
                             Pon a prueba tu cultura general y tus conocimientos con esta versión del popular juego
                             de preguntas y respuestas. Más respuestas, más puntos.

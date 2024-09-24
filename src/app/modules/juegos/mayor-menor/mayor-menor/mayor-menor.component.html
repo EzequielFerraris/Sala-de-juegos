@@ -1,1 +1,102 @@
-<p>mayor-menor works!</p>
+<div id="contenedor principal" 
+    class="bg-brazil-fondo lg:flex items-center 
+            justify-center w-full h-full gap-20 
+            p-11 font-brasil">
+    <div>
+        <div class="items-center content-center text-center">
+            
+            <div>
+                <h1 class="text-center uppercase text-6xl text-brazil-verde">MAYOR, MENOR O IGUAL</h1>
+                <p class="mt-6 text-center text-brazil-azul text-4xl">Bienvenido a Brasil, donde deberás apostar tus puntos para predecir si la siguiente carta es mayor, menor o igual. No te confíes o vas a quedar enterrado en la playa. Más de un turista lo perdió todo en esta costa tropical.</p>
+                <button
+                        class="font-brasil bg-l-o-naranja text-brazil-azul  active:bg-brazil-azul
+                                active:text-l-o-naranja text-2xl font-bold uppercase px-2 py-1 
+                                rounded shadow hover:shadow-lg outline-none focus:outline-none w-md mt-5"
+                        (click)="reglas()"
+                        type="button">
+                        REGLAS
+                </button>
+            </div>
+           
+            <div class="lg:flex lg:gap-2 items-center content-center text-center mt-6 lg:mt-0 lg:px-auto mx-auto">
+                
+                <div class="items-center content-center lg:w-1/3">
+                    <h6 class="text-negro text-4xl">Total de puntos:</h6>
+                    
+                    <input 
+                        type="number" 
+                        value= {{puntos}}
+                        class="w-auto mt-2 text-center text-3xl bg-brazil-verde-claro border-none"
+                        
+                        readonly>
+
+                    <h6 *ngIf="!esperando" class="text-negro text-4xl mt-4">Apuesta:</h6>
+                    
+                    <input 
+                        type="number" 
+                        [(ngModel)]="apuesta"
+                        class="w-auto mt-2 text-center text-3xl bg-brazil-azul"
+                        min="1"
+                        max="{{ puntos }}"
+                        [disabled]="esperando"
+                        [hidden]="esperando"
+                        >
+
+                    <button
+                        class="font-brasil bg-brazil-amarillo text-brazil-gris active:bg-brazil-gris
+                                active:text-brazil-amarillo text-2xl font-bold uppercase px-6 py-3 
+                                rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 my-3 w-full"
+                        [disabled]="!esperando"
+                        [hidden]="!esperando"
+                        (click)="comenzar()"
+                        type="button">
+                        COMENZAR
+                    </button>
+                </div>
+                
+                <div class="items-center content-center lg:w-1/3">
+                    <img src="{{ carta_actual[0] }}" 
+                    alt="carta"
+                    class="max-w-40 md:max-w-60 mt-6 mb-3 mx-auto">
+                </div>
+                
+                <div class="items-center content-center lg:w-1/3">
+                    <button
+                        class="font-brasil bg-brazil-verde text-brazil-amarillo active:bg-brazil-amarillo
+                                active:text-brazil-verde text-4xl font-bold uppercase px-6 py-3 
+                                rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full
+                                disabled:bg-brazil-gris"
+                        [disabled]="esperando"
+                        [hidden]="esperando"
+                        (click)="jugar('mayor')"
+                        type="button">
+                        MAYOR
+                    </button>
+                    <button
+                        class="font-brasil bg-l-o-naranja text-brazil-azul  active:bg-brazil-azul
+                                active:text-l-o-naranja text-4xl font-bold uppercase px-6 py-3 
+                                rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 my-3 w-full
+                                disabled:bg-brazil-gris"
+                        [disabled]="esperando"
+                        [hidden]="esperando"
+                        (click)="jugar('igual')"
+                        type="button">
+                        IGUAL
+                    </button>
+                    <button
+                        class="font-brasil bg-brazil-amarillo text-brazil-azul  active:bg-brazil-azul
+                                active:text-brazil-amarillo text-4xl font-bold uppercase px-6 py-3 
+                                rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full
+                                disabled:bg-brazil-gris"
+                        [disabled]="esperando"
+                        [hidden]="esperando"
+                        (click)="jugar('menor')"
+                        type="button">
+                        MENOR
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

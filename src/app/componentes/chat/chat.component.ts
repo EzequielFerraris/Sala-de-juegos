@@ -5,6 +5,7 @@ import { collectionData, orderBy, query, limit } from '@angular/fire/firestore';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
 import { Subscription } from 'rxjs';
+import {formatDate} from '@angular/common';
 
 @Component({
   selector: 'app-chat',
@@ -30,6 +31,7 @@ export class ChatComponent {
   }
   comentar()
   {
+    this.comentario = this.comentario.trim();
     this.authService.comentar(this.comentario);
   }
 

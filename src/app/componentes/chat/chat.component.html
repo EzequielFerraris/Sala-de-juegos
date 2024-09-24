@@ -12,15 +12,24 @@
                     {
                         <div class="flex justify-end">
                             <div class="bg-turquesa text-black p-2 rounded-lg max-w-xs">
-                               {{ mensaje.comment }}
+                                <p>{{ mensaje.comment }}</p>
+                                <div class="text-right">
+                                    <p><span class="text-sm text-gray-500 al">{{ mensaje.fecha.toDate() | date:'dd/MM/yy h:mm a'}}</span></p>
+                                </div>
                             </div>
                         </div>
                     }
                     @else 
                     {
+                        
                         <div class="flex">
-                            <div class="bg-gray-300 text-black p-2 rounded-lg max-w-xs">
-                                {{mensaje.user + ": "}}  {{ mensaje.comment }}
+                            
+                            <div class="bg-blanco text-black p-2 rounded-lg max-w-xs">
+                                <h1 class="text-violeta">{{mensaje.user}}</h1>
+                                <p>{{ mensaje.comment }}</p>
+                                <div class="text-right">
+                                    <p><span class="text-sm text-gray-500 al">{{ mensaje.fecha.toDate() | date:'dd/MM/yy h:mm a' }}</span></p>
+                                </div>
                             </div>
                         </div>
                     }
@@ -35,13 +44,15 @@
             <input 
             type="text" 
             placeholder="Escribe tu mensaje..." 
-            class="flex-1 border rounded-full px-4 py-2 focus:outline-none bg-fucsia text-blanco" 
+            class="flex-1 border rounded-full px-4 py-2 focus:outline-none bg-fucsia text-blanco placeholder:text-blanco" 
             [(ngModel)]="comentario"
             />
 
                 <button 
                 class="bg-turquesa text-negro rounded-full p-2 ml-2 hover:bg-negro hover:text-turquesa focus:outline-none"
-                (click)="comentar()">
+                (click)="comentar()"
+                [disabled]="comentario.length < 1"
+                [hidden]="comentario.trim().length < 1">
                   <svg width="20px" 
                     height="20px" 
                     viewBox="0 0 24 24" 
