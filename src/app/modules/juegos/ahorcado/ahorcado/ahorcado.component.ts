@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
   styleUrl: './ahorcado.component.css'
 })
 export class AhorcadoComponent {
-  private url = "https://clientes.api.greenborn.com.ar/public-random-word";
+  private url = "https://clientes.api.greenborn.com.ar/public-random-word?c=1";
   public abecedario = ["A", "B", "C", "D", "E", "F", "G", "H", 
                         "I", "J", "K", "L", "M", "N", "Ñ", "O", 
                         "P", "Q", "R", "S", "T", "U", "V", "W", 
@@ -80,9 +80,11 @@ export class AhorcadoComponent {
               title: 'VICTORIA',
               text: '¡Has escapado con todas tus ganancias!',
               icon: 'success',
-              iconColor: '#FF00C1',
+              iconColor: '#3b82f6',
               confirmButtonText: 'Ok',
-              confirmButtonColor: '#00FFEB'
+              confirmButtonColor: '#3b82f6',
+              background: '#ccb99a',
+              color: "#3b82f6",
             }).then(()=> {window.location.reload()});
         }
     }
@@ -94,11 +96,13 @@ export class AhorcadoComponent {
         Swal.fire(
           {
             title: 'DERROTA',
-            text: 'El Sheriff se lleva la victoria esta vez ¡Intentalo nuevamente!',
+            text: 'El Sheriff se lleva la victoria esta vez',
             icon: 'error',
-            iconColor: '#FF00C1',
+            iconColor: '#f2573c',
             confirmButtonText: 'Ok',
-            confirmButtonColor: '#00FFEB'
+            confirmButtonColor: '#f2573c',
+            background: '#ccb99a',
+            color: "#f2573c",
           }).then(()=> {window.location.reload()});
          
       }
