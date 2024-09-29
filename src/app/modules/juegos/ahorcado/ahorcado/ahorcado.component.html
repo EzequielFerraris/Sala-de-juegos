@@ -1,46 +1,53 @@
-<div id="contenedor principal" class="bg-l-o-fondo lg:flex items-center justify-center w-full h-full gap-20 p-11 font-oeste">
-    <div id="imagen y titulo" class="items-center">
-        <h1 class="text-center uppercase text-l-o-titulo text-5xl">AHORCADO</h1>
-        <p class="mt-6 text-justify text-l-o-texto">Bienvenido al Lejano Oeste, la tierra en la que deberás adivinar palabras en español o morirás en la horca. Hacé click en las letras para encontrar la palabra secreta. Tenés 7 intentos antes de morir.</p>
-        <img 
-        class="max-w-40 md:max-w-60 mt-6 mx-auto"
-        src="{{img[intentos_fallidos]}}" 
-        alt="hangman_0">
-    </div>
-    <div class="text-center text-l-o-texto">
-        <ul class="flex items-center justify-center list-none gap-2 pb-3 mb-3 pt-20 md:pt-10">
+<div id="contenedor principal" 
+    class="bg-l-o-fondo flex lg:h-full">
+    
+    <div class="mt-auto lg:flex items-center justify-center w-full h-full gap-20 p-11 font-oeste">
+        
+        <div id="imagen y titulo" class="items-center">
 
-            @for(letra1 of palabra[0]; track $index)
-            {
-                <li *ngIf="!letras_adivinadas.includes(letra1)" 
-                    class="w-10 text-4xl border-b-2 border-solid border-b-l-o-texto text-center">
-                </li>
-                <li *ngIf="letras_adivinadas.includes(letra1)"
-                    class = "w-10 text-4xl text-center">{{ letra1 }} </li>
-            }
-
-        </ul>
-        <h4 class="my-5">Intentos fallidos:
-        <b><span class="text-l-o-naranja">{{ intentos_fallidos }} / 7 </span></b>
-        </h4>
-        <div id='tablero' class="flex flex-wrap justify-center gap-1 md:gap-2">
-            @for(letra of abecedario; track $index)
-            {
-                <button class="font-oeste bg-l-o-texto text-negro 
-                            active:bg-l-o-titulo active:text-l-o-texto 
-                            text-sm md:text-md font-bold uppercase px-4 md:px-6 py-3 rounded shadow 
-                            hover:bg-l-o-mostaza outline-none focus:outline-none 'disabled:text-negro'"
-                        [ngClass]="{'disabled:bg-l-o-naranja': !palabra[0].includes(letra), 'disabled:bg-blue-500': palabra[0].includes(letra) }"   
-                            (click)="check(letra, $event);"
-                            >{{ letra }}</button>
-            }     
+            <h1 class="text-center uppercase text-l-o-titulo text-5xl">AHORCADO</h1>
+            <p class="mt-6 text-justify text-l-o-texto">Bienvenido al Lejano Oeste, la tierra en la que deberás adivinar palabras en español o morirás en la horca. Hacé click en las letras para encontrar la palabra secreta. Tenés 7 intentos antes de morir.</p>
+            <img 
+            class="max-w-40 md:max-w-60 mt-6 mx-auto"
+            src="{{img[intentos_fallidos]}}" 
+            alt="hangman_0">
+        </div>
+        <div class="text-center text-l-o-texto">
+            <ul class="flex items-center justify-center list-none gap-2 pb-3 mb-3 pt-20 md:pt-10">
+    
+                @for(letra1 of palabra[0]; track $index)
+                {
+                    <li *ngIf="!letras_adivinadas.includes(letra1)" 
+                        class="w-10 text-4xl border-b-2 border-solid border-b-l-o-texto text-center">
+                    </li>
+                    <li *ngIf="letras_adivinadas.includes(letra1)"
+                        class = "w-10 text-4xl text-center">{{ letra1 }} </li>
+                }
+    
+            </ul>
+            <h4 class="my-5">Intentos fallidos:
+            <b><span class="text-l-o-naranja">{{ intentos_fallidos }} / 7 </span></b>
+            </h4>
+            <div id='tablero' class="flex flex-wrap justify-center gap-1 md:gap-2">
+                @for(letra of abecedario; track $index)
+                {
+                    <button class="font-oeste bg-l-o-texto text-negro 
+                                active:bg-l-o-titulo active:text-l-o-texto 
+                                text-sm md:text-md font-bold uppercase px-4 md:px-6 py-3 rounded shadow 
+                                hover:bg-l-o-mostaza outline-none focus:outline-none 'disabled:text-negro'"
+                            [ngClass]="{'disabled:bg-l-o-naranja': (!palabra[0]?.includes(letra)), 'disabled:bg-blue-500': (palabra[0]?.includes(letra)) }"   
+                                (click)="check(letra, $event);"
+                                >{{ letra }}</button>
+                }     
+            </div>
+        </div>
+        <div id="vaquero" class="items-center">
+            <img src="https://firebasestorage.googleapis.com/v0/b/prueba1-7bc74.appspot.com/o/assets%2Fimg%2Fhangman%2Fvaquero.png?alt=media&token=ad7ca1a1-97dd-4931-9f8c-0c55acc7f1e9" 
+            alt="vaquero"
+            class="min-w-60 mx-auto pt-10">
         </div>
     </div>
-    <div id="vaquero" class="items-center">
-        <img src="https://firebasestorage.googleapis.com/v0/b/prueba1-7bc74.appspot.com/o/assets%2Fimg%2Fhangman%2Fvaquero.png?alt=media&token=ad7ca1a1-97dd-4931-9f8c-0c55acc7f1e9" 
-        alt="vaquero"
-        class="min-w-60 mx-auto pt-10">
-    </div>
+    
     
 </div>
 

@@ -1,7 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Auth, signOut, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged } from '@angular/fire/auth';
-import { addDoc, collection, Firestore, collectionData } from '@angular/fire/firestore';
+import { addDoc, collection, Firestore } from '@angular/fire/firestore';
 import Swal from 'sweetalert2';
 
 
@@ -19,7 +19,7 @@ export class AuthService implements OnInit{
   
   ngOnInit(){}
 
-  get_user()
+  get_user() 
   {
     return this.auth.currentUser;
   }
@@ -120,6 +120,7 @@ export class AuthService implements OnInit{
         if(input_mail !== null && input_pass !== null) 
         {
           signInWithEmailAndPassword(this.auth, input_mail, input_pass).then((res) => {
+            localStorage.setItem('mailUsuario', input_mail);
             Swal.fire(
               {
                 title: '¡Bienvenido ' + input_mail + '!' ,
@@ -129,7 +130,8 @@ export class AuthService implements OnInit{
                 confirmButtonText: 'Ok',
                 confirmButtonColor: '#00FFEB'
               }).then(() => {
-                this.router.navigate(['home'])});
+                this.router.navigate(['home'])}).then(()=> 
+                  {window.location.reload()});
           }).catch((e) => {
             Swal.fire(
               {

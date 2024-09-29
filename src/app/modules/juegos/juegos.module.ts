@@ -4,17 +4,17 @@ import { JuegosRoutingModule } from './juegos-routing.module';
 import { AhorcadoComponent } from './ahorcado/ahorcado/ahorcado.component';
 import { MayorMenorComponent } from './mayor-menor/mayor-menor/mayor-menor.component';
 import { PreguntadosComponent } from './preguntados/preguntados/preguntados.component';
-import { BlackJackComponent } from './blackJack/black-jack/black-jack.component';
-import { FormsModule } from '@angular/forms';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SudokuComponent } from './sudoku/sudoku.component';
 
 
 @NgModule({
-  declarations: [AhorcadoComponent, MayorMenorComponent, PreguntadosComponent, BlackJackComponent],
+  declarations: [AhorcadoComponent, MayorMenorComponent, PreguntadosComponent, SudokuComponent],
   imports: [
     CommonModule,
     JuegosRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [AhorcadoComponent],
 })

@@ -54,7 +54,7 @@
                             </div>
                             @if(usuario)
                             {
-                                <h6 class="text-4xl font-semibold font-pixelify text-violeta hover:text-negro"><a href="juegos/mayor-menor">Mayor o menor</a></h6>
+                                <h6 class="text-4xl font-semibold font-pixelify text-violeta hover:text-negro"><a href="juegos/mayor-menor">Mayor, menor o igual</a></h6>
                             }
                             @else {
                                 <h6 class="text-4xl font-semibold font-pixelify text-violeta hover:text-negro"><a href="login">Mayor, menor o igual</a></h6>
@@ -73,7 +73,13 @@
                             <div class="text-blanco p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-fucsia">
                                 <fa-icon [icon]="['fas', 'question']"></fa-icon>
                             </div>
-                            <h6 class="text-4xl font-semibold font-pixelify">Preguntados</h6>
+                            @if(usuario)
+                            {
+                                <h6 class="text-4xl font-semibold font-pixelify text-violeta hover:text-negro"><a href="juegos/preguntados">Preguntados</a></h6>
+                            }
+                            @else {
+                                <h6 class="text-4xl font-semibold font-pixelify text-violeta hover:text-negro"><a href="login">Preguntados</a></h6>
+                            }
                             <p class="mt-2 mb-4 text-gray-600">
                             Pon a prueba tu cultura general y tus conocimientos con esta versión del popular juego
                             de preguntas y respuestas. Más respuestas, más puntos.
@@ -94,20 +100,19 @@
                             La estrella del momento
                         </h3>
                         <p class="text-lg font-light leading-relaxed mt-4 mb-4 text-blanco">
-                            Juega al último juego que traemos para ti. Juega al famoso Black Jack, pero 
-                            en versión online.
+                            Juega al último juego que traemos para ti. Un generador de Sudokus online.
                         </p>    
                         <p class="text-lg font-light leading-relaxed mt-0 mb-4 text-blanco">
-                            Un juego clásico, con dificultad variable. Desafía al azar con tu ingenio.
+                            Un juego clásico, con dificultad variable que desafía todo tu ingenio.
                         </p>
-                        <a href="" class="font-bold text-blanco hover:text-secundario-naranja mt-8">
-                            Jugar al Black Jack
+                        <a href="juegos/sudoku" class="font-bold text-blanco hover:text-secundario-naranja mt-8">
+                            Jugar al Sudoku
                         </a>
                 </div>
-
+        
                 <div class="w-full md:w-4/12 px-4 mr-auto ml-auto">
                     <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg">
-                        <img alt="cartas de poker" src="https://firebasestorage.googleapis.com/v0/b/prueba1-7bc74.appspot.com/o/assets%2Fimg%2FblackJack.png?alt=media&token=94ec3a2f-40db-47af-a469-c37138e471d5" class="w-full align-bottom"/>      
+                        <img alt="sudoku" src="https://firebasestorage.googleapis.com/v0/b/prueba1-7bc74.appspot.com/o/assets%2Fimg%2Fsudoku.png?alt=media&token=81bfc28d-a441-4225-81cf-ca74a657267d" class="w-full align-bottom"/>      
                     </div>
                 </div>
 

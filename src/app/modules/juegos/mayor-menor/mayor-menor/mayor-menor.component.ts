@@ -86,7 +86,7 @@ export class MayorMenorComponent {
   correcto()
   {
     this.puntos += this.apuesta * 2;
-    if(this.puntos > 30)
+    if(this.puntos > 29)
     {
       Swal.fire(
         {
@@ -159,18 +159,18 @@ export class MayorMenorComponent {
                   "Cuentas con una cantidad inicial de puntos para apostar. " +
                   "En cada ronda puedes elegir cuántos de esos puntos arriesgar. Si el resultado es positivo, ganarás el doble de lo apostado. " +
                   "Sin embargo, si pierdes, esos puntos se deducirán de tu total. " + "Pierdes la partida si pierdes todos tus puntos. " +
-                  "¡Si logras llegar a 50 puntos o más, ganas la partida y todos los puntos ganados hasta ese momento! "
+                  "¡Si logras llegar a 30 puntos o más, ganas la partida y todos los puntos ganados hasta ese momento! "
 
     Swal.fire(
       {
         title: 'REGLAS',
         text: reglas,
-        color: "#256fa2",
+        color: "#ffffff",
         icon: 'question',
-        iconColor: '#F2573C',
-        background: '#e9d1aa',
+        iconColor: '#ffffff',
+        background: '#F2573C',
         confirmButtonText: 'Ok',
-        confirmButtonColor: '#F2573C'
+        confirmButtonColor: '#f7c548'
       });
   }
 

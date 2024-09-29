@@ -33,6 +33,7 @@ export class ChatComponent {
   {
     this.comentario = this.comentario.trim();
     this.authService.comentar(this.comentario);
+    this.comentario = "";
   }
 
   get_chat()

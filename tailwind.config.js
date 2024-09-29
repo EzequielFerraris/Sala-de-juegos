@@ -22,14 +22,19 @@ module.exports = {
         'brazil-verde-claro': '#a1c828',
         'brazil-azul': "#256fa2",
         'brazil-amarillo': '#f7c548',
-        'brazil-gris': '#495867'  
+        'brazil-gris': '#495867',
+        'japon-gris-oscuro': '#87889b',
+        'japon-gris-claro': '#dedee0',
+        'japon-rojo': '#cd1f1c',
+        'japon-azul': '#0b1b39'
       },
       fontFamily: {
         comic: "'Press Start 2P', serif",  
         pixelify: "'Pixelify Sans', sans-serif",
         changa: "'Changa', sans-serif",
         oeste: "'Arbutus Slab', sans-serif",
-        brasil: "'Bahiana', sans-serif"
+        brasil: "'Bahiana', sans-serif",
+        japon: "'Nanum Brush Script', sans-serif"
       }
     },
   },

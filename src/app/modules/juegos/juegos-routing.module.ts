@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AhorcadoComponent } from './ahorcado/ahorcado/ahorcado.component';
 import { MayorMenorComponent } from './mayor-menor/mayor-menor/mayor-menor.component';
 import { PreguntadosComponent } from './preguntados/preguntados/preguntados.component';
-import { BlackJackComponent } from './blackJack/black-jack/black-jack.component';
+import { SudokuComponent } from './sudoku/sudoku.component';
 
 const routes: Routes = [
   {
@@ -19,8 +19,8 @@ const routes: Routes = [
     component : PreguntadosComponent
   },
   {
-    path: 'blackJack',
-    component : BlackJackComponent
+    path: 'sudoku',
+    component : SudokuComponent
   }
 ];
 
