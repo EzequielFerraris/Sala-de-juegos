@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 })
 export class PreguntadosComponent {
   private url = 'https://restcountries.com/v3.1/all?fields=translations,capital,flags';
-  public paises : any[];
+  public paises! : any[];
   public puntaje = 0;
   public bandera_actual : string = "";
   public pais_actual : any;
@@ -21,7 +21,6 @@ export class PreguntadosComponent {
 
   constructor(private http : HttpClient)
   {
-    this.paises = [];
   }
 
   ngOnInit()
@@ -30,6 +29,7 @@ export class PreguntadosComponent {
       {
         next: (paises) => { 
           this.paises = paises;
+          this.elegir_un_pais();
         },
         error: (e) => { console.log(e) }
       }
@@ -49,6 +49,8 @@ export class PreguntadosComponent {
     this.pais_actual = this.paises[this.indice];
     this.bandera_actual = this.pais_actual.flags.png;
     this.paises_usados_id.push(this.indice);
+    this.opciones_respuesta = [];
+    this.elegir_pregunta();
   }
 
   elegir_pregunta()
@@ -85,6 +87,7 @@ export class PreguntadosComponent {
       }
       otras++;
     }
+    this.opciones_respuesta = this.mezclar_array(this.opciones_respuesta);
   }
 
   elegir_respuesta(opcion : string)
@@ -97,48 +100,43 @@ export class PreguntadosComponent {
         title: 'CORRECTO',
         text: '¡Acertaste! Ganaste 20 puntos.',
         icon: 'success',
-        iconColor: '#256fa2',
+        iconColor: '#ffffff',
         position: "top-end",
         showConfirmButton: false,
-        timer: 1500,
-        background: '#a1c828',
-        color: "#256fa2",
-      }).then(()=> {this.elegir_pregunta()});
+        timer: 2000,
+        background: '#26813a',
+        color: "#ffffff",
+      }).then(()=> {this.elegir_un_pais()});
     }
     else
     {
-      this.puntaje -= 10;
-      if(this.puntaje <= 0)
+      
+      if(this.puntaje > 10)
       {
-        Swal.fire(
-        {
-          title: 'GAME OVER',
-          text: '¡Te has quedado sin puntos! Vuelve cuando tengas más.',
-          icon: 'error',
-          iconColor: '#f7c548',
-          confirmButtonText: 'Ok',
-          confirmButtonColor: '#f7c548',
-          background: '#F2573C',
-          color: "#f7c548",
-        }).then(()=> {window.location.reload()});
+        this.puntaje -= 10;
       }
-      else
-      {
-        Swal.fire(
+      Swal.fire(
         {
           title: 'INCORRECTO',
-          text: 'La respuesta correcta era: ' + this.respuesta_correcta + ' Perdiste 10 puntos.',
+          text: 'La respuesta correcta era: ' + this.respuesta_correcta,
           icon: 'error',
-          iconColor: '#F2573C',
+          iconColor: '#ffffff',
           position: "top-end",
           showConfirmButton: false,
-          timer: 1500,
-          background: '#f7c548',
-          color: "#F2573C",
-        }).then(()=> {this.elegir_pregunta()});
-      }
-      
+          timer: 2000,
+          background: '#ff7900',
+          color: "#ffffff",
+        }).then(()=> {this.elegir_un_pais()});   
     }
+  }
+
+  mezclar_array<T>(array: T[]): T[] {
+    const length = array.length;
+    for (let i = length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
   }
 
   /*
@@ -154,8 +152,7 @@ export class PreguntadosComponent {
     }
   }
   */
-
-
+ 
   //LOGICA
   //UN PANEL DE BIENVENIDA CON LAS REGLAS Y UN BOTÓN DE COMENZAR
   //UNA VEZ QUE COMENZAMOS APARECE UNA BANDERA Y UNA PREGUNTA CON OPCIONES ALEATORIAS. TAMBIÉN UN CONTADOR DE PUNTOS Y UN BOTÓN DE "RETIRARSE" PARA GANAR LOS PUNTOS.

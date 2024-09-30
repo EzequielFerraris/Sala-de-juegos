@@ -1,11 +1,74 @@
-<div>
-  
-   <!--  @for(pais of paises; track $index)
-    {
-        <div>
-            <h1>{{pais.translations.spa.official}}</h1>
-            <img src="{{pais.flags.png}}" alt="">
-        </div>
-    } -->
 
+<div class="bg-irlanda-gris h-full">
+    
+    <div class="h-full max-w-fit items-center justify-center md:p-11 font-irlanda">
+
+        <div id="encabezado" 
+            class="text-center pt-10 md:pt-0">
+            <h1 class="text-irlanda-verde font-bold text-5xl">
+                PREGUNTADOS
+            </h1>
+            <p class="text-irlanda-naranja-f font-bold text-3xl">
+                Bienvenido a Irlanda, donde deberás acertar en tu conocimiento geográfico para ganar monedas de oro.
+            </p>  
+            <h2 class="text-negro opacity-0 text-3xl">BANDERAS</h2>
+        </div>
+
+        <div id="preguntados"
+            class="md:flex justify-center text-center">
+            
+            <div id="tablero_pregunta"
+                class="md:w-1/2 h-fit bg-irlanda-verde bg-opacity-40 rounded-lg">
+                <div class="flex items-center text-center justify-center content-center gap-2 pt-5">
+                    <img src="https://firebasestorage.googleapis.com/v0/b/prueba1-7bc74.appspot.com/o/assets%2Fimg%2Fpreguntados%2Fmoneda.png?alt=media&token=851b80d5-197e-4e66-bcbb-6525cd8aff9e" 
+                    alt=""
+                    class="md:invisible md:absolute lg:visible lg:relative">
+                    <h2 class="text-irlanda-verde text-5xl">BANDERAS</h2>
+                    <img src="https://firebasestorage.googleapis.com/v0/b/prueba1-7bc74.appspot.com/o/assets%2Fimg%2Fpreguntados%2Fmoneda.png?alt=media&token=851b80d5-197e-4e66-bcbb-6525cd8aff9e" 
+                    alt=""
+                    class="md:invisible md:absolute lg:visible lg:relative">
+                </div>
+                
+                <p class="text-blanco font-bold pb-5 text-3xl">{{texto_pregunta}}</p>
+                
+                <img src={{bandera_actual}} 
+                alt=""
+                class="mx-auto lg:max-w-80 max-w-screen-sm">
+                
+                <div class="md:w-3/4 w-full mx-auto p-5 items-center content-center justify-center text-center">
+                    @for(pregunta of opciones_respuesta; track indice; let indice = $index)
+                    {
+                        <button 
+                        class="w-full bg-blanco text-irlanda-verde 
+                                font-bold uppercase lg:px-2 py-1 max-h-20 rounded-lg 
+                                block mx-auto my-3 active:bg-irlanda-verde active:text-blanco"
+                        (click)="elegir_respuesta(pregunta)">
+                            {{pregunta}}
+                        </button>
+                    }
+                </div>
+            </div>
+            <div id="info_deco"
+                class="items-center justify-center text-center md:px-1 lg:px-20">
+                <div>
+                    <img src="https://firebasestorage.googleapis.com/v0/b/prueba1-7bc74.appspot.com/o/assets%2Fimg%2Fpreguntados%2Ftreboles.png?alt=media&token=2f424dc5-a973-4f5a-addf-d89b21962199" 
+                    alt=""
+                    class="invisible absolute md:visible md:relative mx-auto">
+                </div>
+                <div class="p-10">
+                    <h6>MONEDAS GANADAS:</h6>
+                    <input type="number" min="0" readonly
+                            class="bg-irlanda-amarillo text-2xl text-center"
+                            [value]="puntaje">
+                </div>
+                <div>
+                    <img src="https://firebasestorage.googleapis.com/v0/b/prueba1-7bc74.appspot.com/o/assets%2Fimg%2Fpreguntados%2Fcaldero.png?alt=media&token=d208424a-f025-43e7-a595-b42b34dc54af" 
+                    alt=""
+                    class="mx-auto">
+                </div>
+            </div>
+            
+        </div>
+    </div>
 </div>
+<div class="bg-irlanda-gris h-20"></div>
