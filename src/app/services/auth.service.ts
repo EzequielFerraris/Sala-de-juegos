@@ -17,7 +17,10 @@ export class AuthService implements OnInit{
     
   }
   
-  ngOnInit(){}
+  ngOnInit()
+  {
+    
+  }
 
   get_user() 
   {

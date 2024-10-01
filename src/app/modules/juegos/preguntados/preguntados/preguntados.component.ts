@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
+import { BanderasService } from '../../../../services/banderas.service';
 
 @Component({
   selector: 'app-preguntados',
@@ -8,7 +8,6 @@ import Swal from 'sweetalert2';
   styleUrl: './preguntados.component.css'
 })
 export class PreguntadosComponent {
-  private url = 'https://restcountries.com/v3.1/all?fields=translations,capital,flags';
   public paises! : any[];
   public puntaje = 0;
   public bandera_actual : string = "";
@@ -18,22 +17,22 @@ export class PreguntadosComponent {
   public opciones_respuesta : string[] = [];
   private respuesta_correcta = "";
   public indice! : number;
+  
 
-  constructor(private http : HttpClient)
+  constructor(private banderas : BanderasService)
   {
   }
 
   ngOnInit()
   {
-    this.http.get<any[]>(this.url).subscribe(
+    this.banderas.obtener_paises().subscribe(
       {
         next: (paises) => { 
           this.paises = paises;
           this.elegir_un_pais();
         },
         error: (e) => { console.log(e) }
-      }
-    );
+      });
   }
 
   elegir_un_pais()

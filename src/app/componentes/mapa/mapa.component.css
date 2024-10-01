@@ -6,15 +6,46 @@ svg path:hover {
     fill: #3A0CA3;
 }
 
-#US, #BR, #JP, #IE, #GB{
-    fill: #3A0CA3;
+#IE, #GB{
+    fill: #26813a;
+}
+
+#US{
+    fill: #70533e;
+}
+
+#BR{
+    fill: #f7c548;
+}
+
+#JP{
+    fill: #cd1f1c;
 }
 
 #US:hover, #BR:hover, #JP:hover, #IE:hover, #GB:hover{
     fill: #FF00C1;
 }
 
-.container {
-    width: 100%;
-    margin: 0 auto;
-}
+@media (max-width: 1200px) {
+    #svggroup svg {
+    width: 800px;
+    }
+    }
+    
+    @media (max-width: 960px) {
+    #svggroup svg {
+    width: 600px;
+    }
+    }
+    
+    @media (max-width: 768px) {
+    #svggroup svg {
+    width: 400px;
+    }
+    }
+    
+    @media (max-width: 420px) {
+    #svggroup svg {
+    width: 200px;
+    }
+    }
