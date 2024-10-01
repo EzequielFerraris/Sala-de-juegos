@@ -1,137 +1,14 @@
 <main class="font-changa">
-    <div class="relative pt-16 pb-32 flex content-center items-center justify-center bg-violeta" style="min-height: 75vh;">
-        
-        <div class="absolute top-0 w-full h-full bg-center bg-cover">
-                <span class="w-full h-full absolute"></span>
-        </div>
-
-        <div class="container relative mx-auto">
-            <div class="items-center flex flex-wrap uppercase">
-                <div class="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
-                        <h1 class="text-white font-semibold text-5xl font-comic">Los mejores juegos online</h1>
-                        <p class="mt-4 text-lg text-gray-300 font-pixelify">
-                            Sala de Juegos es una aplicación que te permite mostrar lo fácil que es hacer un sitio de juegos online.
-                        </p>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <section class="pb-20 bg-negro -mt-24">
-
-        <div class="container mx-auto md:my-auto px-4">
-
-            <div class="flex flex-wrap md:pb-0">
-
-                <div class="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center">
-                    <div class="relative flex flex-col min-w-0 break-words bg-blanco w-full mb-8 shadow-lg rounded-lg">
-                        <div class="px-4 py-5 flex-auto">
-                            <div class="text-blanco p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-fucsia">
-                                <fa-icon [icon]="['fas', 'face-dizzy']"></fa-icon>
-                            </div>
-                            @if(usuario)
-                            {
-                                <h6 class="text-4xl font-semibold font-pixelify text-violeta hover:text-negro"><a href="juegos/ahorcado">Ahorcado</a></h6>
-                            }
-                            @else {
-                                <h6 class="text-4xl font-semibold font-pixelify text-violeta hover:text-negro"><a href="login">Ahorcado</a></h6>
-                            }
-                            
-                            <p class="mt-2 mb-4 text-gray-600">
-                                El clásico juego de descubrir una palabra antes de morir en la horca, pero en el Lejano Oeste. 
-                                Prueba tu conocimiento del idioma español con este minijuego.
-                            </p>        
-                        </div>
-                    </div>
-                </div>
-
-                <div class="w-full pt-6 md:w-4/12 px-4 text-center">
-                    <div class="relative flex flex-col min-w-0 break-words bg-blanco w-full mb-8 shadow-lg rounded-lg">
-                        <div class="px-4 py-5 flex-auto">
-                            <div class="text-blanco p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-fucsia">
-                                <fa-icon [icon]="['fas', 'plus-minus']"></fa-icon>
-                            </div>
-                            @if(usuario)
-                            {
-                                <h6 class="text-4xl font-semibold font-pixelify text-violeta hover:text-negro"><a href="juegos/mayor-menor">Mayor, menor o igual</a></h6>
-                            }
-                            @else {
-                                <h6 class="text-4xl font-semibold font-pixelify text-violeta hover:text-negro"><a href="login">Mayor, menor o igual</a></h6>
-                            }
-                            <p class="mt-2 mb-4 text-gray-600">
-                                ¿Lo tuyo son los números y no las palabras complejas? Intenta entonces averiguar el
-                                numero secreto en la menor cantidad de intentos.
-                            </p>                        
-                        </div>
-                    </div>
-                </div>
-
-                <div class="pt-6 lg:pt-10 w-full md:w-4/12 px-4 text-center">
-                    <div class="relative flex flex-col min-w-0 break-words bg-blanco w-full mb-8 shadow-lg rounded-lg">
-                        <div class="px-4 py-5 flex-auto">
-                            <div class="text-blanco p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-fucsia">
-                                <fa-icon [icon]="['fas', 'question']"></fa-icon>
-                            </div>
-                            @if(usuario)
-                            {
-                                <h6 class="text-4xl font-semibold font-pixelify text-violeta hover:text-negro"><a href="juegos/preguntados">Preguntados</a></h6>
-                            }
-                            @else {
-                                <h6 class="text-4xl font-semibold font-pixelify text-violeta hover:text-negro"><a href="login">Preguntados</a></h6>
-                            }
-                            <p class="mt-2 mb-4 text-gray-600">
-                            Pon a prueba tu cultura general y tus conocimientos con esta versión del popular juego
-                            de preguntas y respuestas. Más respuestas, más puntos.
-                            </p>
-                        </div>
-                    </div>
-                </div>            
-            
-            </div>
-
-            <div class="flex flex-wrap items-center mt-8 lg:mt-32 md:mt-20">
-                
-                <div class="w-full md:w-5/12 px-4 mr-auto ml-auto mb-4 md:mb-0">
-                    <div class="text-negro p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-turquesa">
-                        <fa-icon [icon]="['fas', 'heart']"></fa-icon>
-                    </div>
-                        <h3 class="text-3xl mb-2 font-semibold leading-normal text-blanco font-pixelify">
-                            La estrella del momento
-                        </h3>
-                        <p class="text-lg font-light leading-relaxed mt-4 mb-4 text-blanco">
-                            Juega al último juego que traemos para ti. Un generador de Sudokus online.
-                        </p>    
-                        <p class="text-lg font-light leading-relaxed mt-0 mb-4 text-blanco">
-                            Un juego clásico, con dificultad variable que desafía todo tu ingenio.
-                        </p>
-                        <a href="juegos/sudoku" class="font-bold text-blanco hover:text-secundario-naranja mt-8">
-                            Jugar al Sudoku
-                        </a>
-                </div>
-        
-                <div class="w-full md:w-4/12 px-4 mr-auto ml-auto">
-                    <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg">
-                        <img alt="sudoku" src="https://firebasestorage.googleapis.com/v0/b/prueba1-7bc74.appspot.com/o/assets%2Fimg%2Fsudoku.png?alt=media&token=81bfc28d-a441-4225-81cf-ca74a657267d" class="w-full align-bottom"/>      
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-    </section>
-</main>
-
-<main class="font-changa hidden">
     <div class="relative pt-16 pb-32 flex content-center items-center justify-center bg-violeta">
         <div class="md:flex container relative mx-auto">
-            <div class="items-center flex flex-wrap uppercase">
+            <div class="items-center flex uppercase">
                 <div>
                     <img src="https://firebasestorage.googleapis.com/v0/b/prueba1-7bc74.appspot.com/o/assets%2Fimg%2Fgalaxia.png?alt=media&token=4ac804ab-2678-45f1-8cf3-a01492a247b1" 
-                    alt="">
+                    alt=""
+                    class="absolute invisible md:visible md:relative">
                 </div>
                 <div class="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
-                    <h1 class="text-turquesa font-semibold text-5xl font-comic">BIENVENIDO A JUEGOS ESTELARES</h1>
+                    <h1 class="text-turquesa font-semibold text-3xl md:text-5xl font-comic">BIENVENIDO A LOS JUEGOS ESTELARES</h1>
                     <p class="mt-4 text-lg text-fucsia font-retropix">
                         Esta edición de los Juegos Estelares tiene como sede al planeta Tierra. 
                     </p>
@@ -145,13 +22,10 @@
     <section class="relative pb-20 bg-negro -mt-24">
 
         <div class="container mx-auto md:my-auto px-4 py-16">
-            <div class="flex flex-wrap md:pb-0">
-                <img src="https://firebasestorage.googleapis.com/v0/b/prueba1-7bc74.appspot.com/o/assets%2Fimg%2Ftierra.png?alt=media&token=8d701971-fa2e-4960-96ed-514e173feafa" 
-                alt=""
-                class="mx-auto">                
+            <div class="content-center items-center justify-center md:pb-0">
+                <app-mapa></app-mapa>             
             </div>
         </div>
-
     </section>
 </main>
     

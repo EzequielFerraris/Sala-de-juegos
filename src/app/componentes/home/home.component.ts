@@ -6,11 +6,12 @@ import { faQuestion } from '@fortawesome/free-solid-svg-icons';
 import { faPlusMinus } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from '../../services/auth.service';
+import { MapaComponent } from '../mapa/mapa.component';
 
 @Component({
   selector: 'home',
   standalone: true,
-  imports: [FontAwesomeModule],
+  imports: [FontAwesomeModule, MapaComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'  
 })

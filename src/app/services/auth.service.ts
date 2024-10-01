@@ -88,6 +88,7 @@ export class AuthService implements OnInit{
       Swal.fire(
         {
           title: 'Salir',
+          iconColor: '#FF00C1',
           text: 'Ha salido correctamente.',
           icon: 'success',
           confirmButtonText: 'Ok'
