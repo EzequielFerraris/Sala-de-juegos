@@ -38,79 +38,117 @@
               </div>
   
             </div>
-  
-            <div class="mt-2 text-center">
-              
-              <h3 class="text-3x1 text-center md:text-4xl font-semibold leading-normal text-blanco md:mb-2 font-comic uppercase">
+            
+            <div id="nuevo_form" class="mb-20">
+              <h3 class="text-3xl text-center md:text-4xl font-semibold leading-normal text-blanco md:mb-10 font-comic uppercase">
                 ENCUESTA
               </h3>
-  
-              <div class="text-3xl leading-normal mt-0 mb-2 text-blanco font-bold pb-4">
 
-                <form [formGroup]="form" (ngSubmit)="enviar()">
-                   
-                    <div class="">                          
-                      <div class="form-control-group">
-                        <label class="form-label" for="nombre">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" formControlName="nombre">
-                        <ng-container *ngIf="this.form.get('nombre')?.hasError('pattern')">
-                          <small class="">Sólo debe contener solo letras</small>
-                        </ng-container>
-                      </div>
-                    </div>
-              
-                    <div class="">
-                      <div class="form-control-group">
-                        <label class="form-label" for="mail">Mail</label>
-                        <input type="email" class="form-control" id="mail" formControlName="mail">
-                        <ng-container *ngIf="this.form.get('mail')?.hasError('mail')">
-                          <small class="">Formato inválido</small>
-                        </ng-container>
-                      </div>
-              
-                      <div class="form-control-group">
-                        <label class="form-label" for="edad">Edad</label>
-                        <input type="number" class="form-control" id="edad" formControlName="edad">
-                        <ng-container *ngIf="this.form.get('edad')?.hasError('min')">
-                          <small class="">Debe ser mayor de edad</small>
-                        </ng-container>
-                      </div>
-                    </div>
-              
-                    <div class="">
-                      <div class="form-control-group">
-                        <label class="form-label" for="clave">Clave</label>
-                        <input type="password" class="form-control" id="clave" formControlName="clave">
-                        <ng-container *ngIf="this.form.get('clave')?.hasError('minlength')">
-                          <small class="">
-                            La clave debe tener mínimo {{this.form.get('clave')?.getError('minlength').requiredLength}} caracteres
-                          </small>
-                        </ng-container>
-                      </div>
-                    </div>
-                  <button
-                    class="font-comic bg-turquesa text-negro active:bg-negro active:text-turquesa text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-1/3"
-                    type="submit">
-                    ENVIAR
-                  </button>
-                </form>
-            </div>
-  
-            <div class="mt-5 md:mt-10 py-10 border-t border-gray-300 text-center">
-              <div class="flex flex-wrap justify-center">
-                <div class="w-full lg:w-9/12 px-4">
-                  <p class="mb-4 text-lg leading-relaxed text-blanco text-center">
-                    CALL TO ACTION
-                  </p>
-                                  
+              <form [formGroup]="form" 
+                    (ngSubmit)="enviar()" 
+                    class="max-w-md mx-auto">
+
+                <div class="grid md:grid-cols-2 md:gap-6">
+                  <div class="relative z-0 w-full mb-5 form-control-group">
+                      <input type="text" name="nombre" id="nombre" formControlName="nombre"
+                              class="form-control block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-fucsia focus:outline-none focus:ring-0 focus:border-fucsia peer" 
+                              placeholder=" " required />
+                      <ng-container *ngIf="this.form.get('nombre')?.hasError('pattern')">
+                          <small class="text-fucsia">Debe contener solo letras</small>
+                      </ng-container>
+                      
+                      <label for="nombre" class="form-label peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-fucsia peer-focus:dark:text-fucsia peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                        Nombre</label>
+                  </div>
+                  <div class="relative z-0 w-full mb-5 form-control-group">
+                      <input type="text" name="apellido" id="apellido" formControlName="apellido"
+                              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-fucsia focus:outline-none focus:ring-0 focus:border-fucsia peer" placeholder=" " required />
+                      <ng-container *ngIf="this.form.get('apellido')?.hasError('pattern')">
+                          <small class="text-fucsia">Debe contener solo letras</small>
+                      </ng-container>
+                      <label for="apellido" 
+                              class="form-label peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-fucsia peer-focus:dark:text-fucsia peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                        Apellido</label>
+                  </div>
                 </div>
-              </div>
+
+                <div class="grid md:grid-cols-2 md:gap-6">
+                  <div class="relative z-0 w-full mb-5 form-control-group">
+                      <input type="text" name="area" id="area" formControlName="area"
+                              class="form-control block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-fucsia focus:outline-none focus:ring-0 focus:border-fucsia peer" 
+                              placeholder=" " required />
+                      <ng-container *ngIf="this.form.get('area')?.hasError('pattern')">
+                          <small class="text-fucsia">Código inválido</small>
+                      </ng-container>
+                      
+                      <label for="area" class="form-label peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-fucsia peer-focus:dark:text-fucsia peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                        Código de área (123)</label>
+                  </div>
+                  <div class="relative z-0 w-full mb-5 form-control-group">
+                      <input type="text" name="celular" id="celular" formControlName="celular"
+                              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-fucsia focus:outline-none focus:ring-0 focus:border-fucsia peer" placeholder=" " required />
+                              <ng-container *ngIf="this.form.get('celular')?.hasError('pattern')">
+                                <small class="text-fucsia">Número inválido</small>
+                          </ng-container>
+                      <label for="celular" 
+                              class="form-label peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-fucsia peer-focus:dark:text-fucsia peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                        Celular (12345678)</label>
+                  </div>
+                </div>
+                
+                <div class="relative z-0 w-full mb-5 form-control-group">
+                    <input type="number" name="edad" id="edad" formControlName="edad" min="1" max="99"
+                            class="form-control block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-fucsia focus:outline-none focus:ring-0 focus:border-fucsia peer" placeholder=" " required />
+                    <ng-container *ngIf="this.form.get('edad')?.hasError('min')">
+                          <small class="text-fucsia">Debe ser mayor de edad</small>
+                    </ng-container>
+                    <label for="edad" class="form-label peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-fucsia peer-focus:dark:text-fucsia peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                      Edad</label>
+                </div>
+
+                <div class="mb-5">
+                  <label for="tipo_juego_preferido" 
+                  class="block mb-2 text-sm font-medium text-gray-500 dark:text-gray-400">Tipo de juego preferido:</label>
+                  <select id="tipo_juego_preferido" name="tipo_juego_preferido" formControlName="tipo_juego_preferido"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-fucsia focus:border-fucsia block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-fucsia dark:focus:border-fucsia">
+                    <option>Puzzles y acertijos</option>
+                    <option>Azar</option>
+                    <option>Velocidad y coordinación</option>
+                    <option>Clickers</option>
+                    <option>Otros</option>
+                  </select>              
+                </div>
+
+                <label class="inline-flex items-center mb-5 cursor-pointer">
+                  <input type="checkbox" value="" id="subscribir" name="subscribir" formControlName="subscribir" checked
+                  class="sr-only peer">
+                  <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-fucsia rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:w-5 after:h-5 after:transition-all dark:border-gray-600 peer-checked:bg-fucsia"></div>
+                  <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Me gustaría recibir información por mail sobre el sitio</span>
+                </label>
+
+                <div class="mb-5">
+                  <label for="opinion" 
+                  class="block mb-2 text-sm font-medium text-gray-500 dark:text-gray-400">Contanos qué juego o funcionalidad te gustaría ver en la página:</label>
+                  <textarea id="opinion" rows="4" name="opinion" formControlName="opinion"
+                  class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-fucsia focus:border-fucsia dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-fucsia dark:focus:border-fucsia" placeholder="Leave a comment..."></textarea>
+                  <ng-container *ngIf="this.form.get('opinion')?.hasError('maxlength')">
+                    <small class="text-fucsia">Mensaje demasiado largo</small>
+                  </ng-container>
+                </div>
+
+                <button
+                        class="font-comic bg-turquesa text-negro active:bg-negro active:text-turquesa text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mb-1 mt-10 w-full"
+                        type="submit"
+                        [disabled]="form.invalid"
+                        [hidden]="form.invalid">
+                        ENVIAR
+                </button>
+              </form>
+
             </div>
-  
+
           </div>
         </div>
       </div>
-    </div>
-
     </section>
 </main>
