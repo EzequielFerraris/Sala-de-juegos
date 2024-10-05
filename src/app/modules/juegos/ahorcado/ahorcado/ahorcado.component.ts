@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { PuntajeService } from '../../../../services/puntaje.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -13,21 +14,24 @@ export class AhorcadoComponent {
                         "I", "J", "K", "L", "M", "N", "Ñ", "O", 
                         "P", "Q", "R", "S", "T", "U", "V", "W", 
                         "X", "Y", "Z"];
-  public img = ["https://firebasestorage.googleapis.com/v0/b/prueba1-7bc74.appspot.com/o/assets%2Fimg%2Fhangman%2F0.png?alt=media&token=6457c85b-a7f1-40a3-ae09-1fa953e61be7",
-                "https://firebasestorage.googleapis.com/v0/b/prueba1-7bc74.appspot.com/o/assets%2Fimg%2Fhangman%2F1.png?alt=media&token=62b04bf9-804e-474a-880a-6ce4fc5c435a",
-                "https://firebasestorage.googleapis.com/v0/b/prueba1-7bc74.appspot.com/o/assets%2Fimg%2Fhangman%2F3.png?alt=media&token=a1eb73ac-5e28-4874-9df7-09101d6b07bb",
-                "https://firebasestorage.googleapis.com/v0/b/prueba1-7bc74.appspot.com/o/assets%2Fimg%2Fhangman%2F4.png?alt=media&token=713cd05c-a134-42ca-aafe-ce4d67ccbafa",
-                "https://firebasestorage.googleapis.com/v0/b/prueba1-7bc74.appspot.com/o/assets%2Fimg%2Fhangman%2F5.png?alt=media&token=1bb05f0a-666e-4a49-a2a4-3d4019cbf020",
-                "https://firebasestorage.googleapis.com/v0/b/prueba1-7bc74.appspot.com/o/assets%2Fimg%2Fhangman%2F6.png?alt=media&token=9fb3a699-025b-4a6b-a436-1495498f3e15",
-                "https://firebasestorage.googleapis.com/v0/b/prueba1-7bc74.appspot.com/o/assets%2Fimg%2Fhangman%2F7.png?alt=media&token=ad48ef0c-fce5-4de8-b463-9758f3bb5ff1",
-                "https://firebasestorage.googleapis.com/v0/b/prueba1-7bc74.appspot.com/o/assets%2Fimg%2Fhangman%2F8.png?alt=media&token=156b653a-ab79-43eb-8a8d-8dd680ef128a"
-  ]
+  public img = ["https://i.postimg.cc/MpQsRgXJ/0.png",
+                  "https://i.postimg.cc/28Jc1Ckx/1.png",
+                  "https://i.postimg.cc/7YbtP5k6/2.png",
+                  "https://i.postimg.cc/ydPpx9xJ/3.png",
+                  "https://i.postimg.cc/7hZs26JK/4.png",
+                  "https://i.postimg.cc/d3NWmY8w/5.png",
+                  "https://i.postimg.cc/CKpc4JfB/6.png",
+                  "https://i.postimg.cc/ZYwDhrX2/7.png"]
+                  
   public error : any;
   public palabra : any[];
   public intentos_fallidos = 0;
   public letras_adivinadas : string[];
 
-  constructor(private http : HttpClient){
+  constructor(private http : HttpClient,
+              private puntaje : PuntajeService
+             )
+  {
     this.palabra = [];
     this.letras_adivinadas = [];
   }
@@ -78,14 +82,23 @@ export class AhorcadoComponent {
           Swal.fire(
             {
               title: 'VICTORIA',
-              text: '¡Has escapado con todas tus ganancias!',
+              text: '¡Has escapado con 200 monedas de oro!',
               icon: 'success',
               iconColor: '#3b82f6',
               confirmButtonText: 'Ok',
               confirmButtonColor: '#3b82f6',
               background: '#ccb99a',
               color: "#3b82f6",
-            }).then(()=> {window.location.reload()});
+            }).then(() => 
+            { 
+              this.puntaje.guardar_puntaje(200, [200,0,0,0]).then(()=> 
+                {
+                  this.puntaje.guardar_partida_jugada('VICTORIA', 200).then(() =>
+                  {
+                    window.location.reload()
+                  })
+                })
+            });
         }
     }
     else
@@ -103,7 +116,13 @@ export class AhorcadoComponent {
             confirmButtonColor: '#f2573c',
             background: '#ccb99a',
             color: "#f2573c",
-          }).then(()=> {window.location.reload()});
+          }).then(() => 
+            {
+              this.puntaje.guardar_partida_jugada('DERROTA', 0).then(() =>
+                {
+                  window.location.reload()
+                })
+            });
          
       }
     }

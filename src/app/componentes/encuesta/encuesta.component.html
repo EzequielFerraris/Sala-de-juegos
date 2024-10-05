@@ -1,0 +1,116 @@
+<main class="profile-page font-changa">
+
+    <section class="relative block" style="height: 300px;">
+          
+      <div class="absolute top-0 w-full h-full bg-center bg-cover">
+        <span class="w-full h-full absolute bg-negro">
+        </span>
+      </div>
+  
+    </section>
+  
+    <section class="relative py-16 bg-negro">
+          
+      <div class="container mx-auto px-4">
+        <div class="relative flex flex-col min-w-0 break-words bg-violeta w-full mb-6 shadow-xl rounded-lg -mt-64">
+          <div class="px-6">
+  
+            <div class="flex flex-wrap justify-center">
+  
+              <div class="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center">
+                <div class="relative">
+                  <img
+                    alt="FOTO USUARIO"
+                    src="https://i.postimg.cc/d0nGT9RK/Logo.png"
+                    class="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16"
+                    style="max-width: 150px;"
+                  />
+                </div>
+              </div>
+  
+              <div class="w-full lg:w-4/12 px-4 lg:order-3 lg:text-right lg:self-center">
+                <div class="pt-6 px-3 mt-28 md:mt-32">
+                 
+                </div>
+              </div>
+  
+              <div class="w-full lg:w-4/12 px-4 lg:order-1">
+              </div>
+  
+            </div>
+  
+            <div class="mt-2 text-center">
+              
+              <h3 class="text-3x1 text-center md:text-4xl font-semibold leading-normal text-blanco md:mb-2 font-comic uppercase">
+                ENCUESTA
+              </h3>
+  
+              <div class="text-3xl leading-normal mt-0 mb-2 text-blanco font-bold pb-4">
+
+                <form [formGroup]="form" (ngSubmit)="enviar()">
+                   
+                    <div class="">                          
+                      <div class="form-control-group">
+                        <label class="form-label" for="nombre">Nombre</label>
+                        <input type="text" class="form-control" id="nombre" formControlName="nombre">
+                        <ng-container *ngIf="this.form.get('nombre')?.hasError('pattern')">
+                          <small class="">Sólo debe contener solo letras</small>
+                        </ng-container>
+                      </div>
+                    </div>
+              
+                    <div class="">
+                      <div class="form-control-group">
+                        <label class="form-label" for="mail">Mail</label>
+                        <input type="email" class="form-control" id="mail" formControlName="mail">
+                        <ng-container *ngIf="this.form.get('mail')?.hasError('mail')">
+                          <small class="">Formato inválido</small>
+                        </ng-container>
+                      </div>
+              
+                      <div class="form-control-group">
+                        <label class="form-label" for="edad">Edad</label>
+                        <input type="number" class="form-control" id="edad" formControlName="edad">
+                        <ng-container *ngIf="this.form.get('edad')?.hasError('min')">
+                          <small class="">Debe ser mayor de edad</small>
+                        </ng-container>
+                      </div>
+                    </div>
+              
+                    <div class="">
+                      <div class="form-control-group">
+                        <label class="form-label" for="clave">Clave</label>
+                        <input type="password" class="form-control" id="clave" formControlName="clave">
+                        <ng-container *ngIf="this.form.get('clave')?.hasError('minlength')">
+                          <small class="">
+                            La clave debe tener mínimo {{this.form.get('clave')?.getError('minlength').requiredLength}} caracteres
+                          </small>
+                        </ng-container>
+                      </div>
+                    </div>
+                  <button
+                    class="font-comic bg-turquesa text-negro active:bg-negro active:text-turquesa text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-1/3"
+                    type="submit">
+                    ENVIAR
+                  </button>
+                </form>
+            </div>
+  
+            <div class="mt-5 md:mt-10 py-10 border-t border-gray-300 text-center">
+              <div class="flex flex-wrap justify-center">
+                <div class="w-full lg:w-9/12 px-4">
+                  <p class="mb-4 text-lg leading-relaxed text-blanco text-center">
+                    CALL TO ACTION
+                  </p>
+                                  
+                </div>
+              </div>
+            </div>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </section>
+</main>

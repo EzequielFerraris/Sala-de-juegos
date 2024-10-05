@@ -1,0 +1,118 @@
+<main class="profile-page font-changa">
+
+    <section class="relative block" style="height: 300px;">
+          
+      <div class="absolute top-0 w-full h-full bg-center bg-cover">
+        <span class="w-full h-full absolute bg-negro">
+        </span>
+      </div>
+  
+    </section>
+  
+    <section class="relative py-16 bg-negro">
+          
+      <div class="container mx-auto px-4">
+        <div class="relative flex flex-col min-w-0 break-words bg-violeta w-full mb-6 shadow-xl rounded-lg -mt-64">
+          <div class="px-6">
+  
+            <div class="flex flex-wrap justify-center">
+  
+              <div class="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center">
+                <div class="relative">
+                  <img
+                    alt="USUARIO"
+                    src="https://i.postimg.cc/d0nGT9RK/Logo.png"
+                    class="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16"
+                    style="max-width: 150px;"
+                  />
+                </div>
+              </div>
+  
+              <div class="w-full lg:w-4/12 px-4 lg:order-3 lg:text-right lg:self-center">
+                <div class="pt-6 px-3 mt-28 md:mt-32">
+                 
+                </div>
+              </div>
+  
+              <div class="w-full lg:w-4/12 px-4 lg:order-1">
+              </div>
+  
+            </div>
+  
+            <div class="mt-2 text-center">
+              
+              <h3 class="text-center md:text-4xl font-semibold leading-normal text-blanco md:mb-2 font-comic uppercase">
+                {{usuario}}
+              </h3>
+  
+              <div class="text-3xl leading-normal mt-0 mb-2 text-blanco font-bold pb-4">
+                PUNTAJE TOTAL:              
+                <span class="text-fucsia">{{this.info[0].puntaje_general}}</span>  
+              </div>
+
+              <div id="boxes" class="mt-auto lg:flex items-center justify-center md:gap-10 lg:gap-52 lg:p-11"> 
+                
+                <div id="puntajes_juegos" class="text-justify md:text-left ">
+                  <div class="mb-2 text-blanco mt-5">
+                    PUNTAJE AHORCADO: <span class="text-turquesa">{{this.info[0].ahorcado}}</span>
+                  </div>
+    
+                  <div class="mb-2 mt-2 text-blanco">
+                    PUNTAJE MAYOR-MENOR-IGUAL: <span class="text-turquesa">{{this.info[0].mayor_menor}}</span>
+                  </div>
+    
+                  <div class="mb-2 mt-2 text-blanco">
+                    PUNTAJE PREGUNTADOS: <span class="text-turquesa">{{this.info[0].preguntados}}</span>
+                  </div>
+    
+                  <div class="mb-2 mt-2 text-blanco">
+                    PUNTAJE SUDOKU: <span class="text-turquesa">{{this.info[0].sudoku}}</span>
+                  </div>
+                </div>
+                
+                <div id="partidas" class="text-blanco">
+                  <h4 class="text-turquesa text-3xl pt-10 md:pt-0 mb-5">ULTIMAS PARTIDAS</h4>
+
+                  <div class="border-2 my-auto mx-auto w-full md:w-3/4 lg:w-full">
+
+                    @for(partida of partidas; track partida_index; let partida_index = $index)
+                    {
+                      <div class="w-full flex justify-between content-center py-2 px-2">
+                        <div class="md:px-5">Resultado: <span class="text-fucsia">{{partida.resultado}}</span></div>
+                        <div class="md:px-5">Puntos: <span class="text-fucsia">{{partida.puntaje}}</span> </div>
+                        <div class="md:px-5"><span class="text-fucsia">{{partida.fecha.toDate() | date:'dd/MM/yy h:mm a'}}</span></div>
+                      </div>
+                    }
+                    
+                  </div>
+                  
+                  
+                </div>
+              </div>
+              
+  
+            </div>
+  
+            <div class="mt-5 md:mt-10 py-10 border-t border-gray-300 text-center">
+              <div class="flex flex-wrap justify-center">
+                <div class="w-full lg:w-9/12 px-4">
+                  <p class="mb-4 text-lg leading-relaxed text-blanco text-center">
+                    ¡Por favor completa nuestra encuesta para poder traerte mejores juegos y una mejor experiencia!
+                  </p>
+                  <button
+                    class="font-comic bg-turquesa text-negro active:bg-negro active:text-turquesa text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 md:w-1/3 w-full"
+                    (click)="encuesta()"
+                    type="button">
+                    RESPONDER ENCUESTA
+                  </button>                
+                </div>
+              </div>
+            </div>
+  
+          </div>
+        </div>
+      </div>
+    </section>
+      
+  
+  </main>

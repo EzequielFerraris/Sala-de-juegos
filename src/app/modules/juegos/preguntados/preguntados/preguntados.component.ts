@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import Swal from 'sweetalert2';
 import { BanderasService } from '../../../../services/banderas.service';
+import { PuntajeService } from '../../../../services/puntaje.service';
 
 @Component({
   selector: 'app-preguntados',
@@ -9,7 +10,7 @@ import { BanderasService } from '../../../../services/banderas.service';
 })
 export class PreguntadosComponent {
   public paises! : any[];
-  public puntaje = 0;
+  public puntos = 0;
   public bandera_actual : string = "";
   public pais_actual : any;
   public paises_usados_id : number[] = [];
@@ -19,7 +20,9 @@ export class PreguntadosComponent {
   public indice! : number;
   
 
-  constructor(private banderas : BanderasService)
+  constructor(private banderas : BanderasService,
+              private puntaje : PuntajeService
+  )
   {
   }
 
@@ -93,7 +96,7 @@ export class PreguntadosComponent {
   {
     if(opcion == this.respuesta_correcta)
     {
-      this.puntaje += 20;
+      this.puntos += 20;
       Swal.fire(
       {
         title: 'CORRECTO',
@@ -105,15 +108,20 @@ export class PreguntadosComponent {
         timer: 2000,
         background: '#26813a',
         color: "#ffffff",
-      }).then(()=> {this.elegir_un_pais()});
+      }).then(() => 
+        { 
+          this.puntaje.guardar_puntaje(20, [0,20,0,0]).then(()=> 
+            {
+              this.puntaje.guardar_partida_jugada('VICTORIA', 20).then(() =>
+                {
+                  this.elegir_un_pais()
+                })
+            });
+        })
     }
     else
     {
-      
-      if(this.puntaje > 10)
-      {
-        this.puntaje -= 10;
-      }
+      this.puntos -= 20;
       Swal.fire(
         {
           title: 'INCORRECTO',
@@ -125,7 +133,16 @@ export class PreguntadosComponent {
           timer: 2000,
           background: '#ff7900',
           color: "#ffffff",
-        }).then(()=> {this.elegir_un_pais()});   
+        }).then(() => 
+          { 
+            this.puntaje.guardar_puntaje(-20, [0,-20,0,0]).then(()=> 
+              {
+                this.puntaje.guardar_partida_jugada('DERROTA', -20).then(() =>
+                  {
+                    this.elegir_un_pais()
+                  })
+              }); 
+          });   
     }
   }
 
@@ -138,25 +155,5 @@ export class PreguntadosComponent {
     return array;
   }
 
-  /*
-  pregunta_pais_capital()
-  {
-    this.texto_pregunta = "¿Cuál es la capital de " + this.pais_actual.translations.spa.official + "?";
-    this.respuesta_correcta = this.pais_actual.capital;
-    let otras = 0;
-    while(otras < 3)
-    {
-
-      otras++;
-    }
-  }
-  */
- 
-  //LOGICA
-  //UN PANEL DE BIENVENIDA CON LAS REGLAS Y UN BOTÓN DE COMENZAR
-  //UNA VEZ QUE COMENZAMOS APARECE UNA BANDERA Y UNA PREGUNTA CON OPCIONES ALEATORIAS. TAMBIÉN UN CONTADOR DE PUNTOS Y UN BOTÓN DE "RETIRARSE" PARA GANAR LOS PUNTOS.
-  //DOS TIPOS DE PREGUNTAS > PAIS DE LA BANDERA Y CAPITAL DEL PAÍS DE LA BANDERA
-  //SI SE ELIGE LA OPCIÓN CORRECTA, SE SUMAN 20 PUNTOS
-  //SI NO SE ELIGE LA CORRECTA, SE RESTAN 10 PUNTOS
 
 }

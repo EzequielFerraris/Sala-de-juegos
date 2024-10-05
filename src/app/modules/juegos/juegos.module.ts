@@ -4,7 +4,7 @@ import { JuegosRoutingModule } from './juegos-routing.module';
 import { AhorcadoComponent } from './ahorcado/ahorcado/ahorcado.component';
 import { MayorMenorComponent } from './mayor-menor/mayor-menor/mayor-menor.component';
 import { PreguntadosComponent } from './preguntados/preguntados/preguntados.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { SudokuComponent } from './sudoku/sudoku.component';
 
 
@@ -13,8 +13,7 @@ import { SudokuComponent } from './sudoku/sudoku.component';
   imports: [
     CommonModule,
     JuegosRoutingModule,
-    FormsModule,
-    ReactiveFormsModule
+    FormsModule
   ],
   exports: [AhorcadoComponent],
 })

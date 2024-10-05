@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { getSudoku } from 'sudoku-gen';
 import { Difficulty } from 'sudoku-gen/dist/types/difficulty.type';
+import { PuntajeService } from '../../../services/puntaje.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -16,7 +17,7 @@ export class SudokuComponent {
   public dificultad_menu : boolean;
   public puntos = 0;
 
-  constructor()
+  constructor(private puntaje : PuntajeService)
   {
     this.dificultad_menu = true;
   }
@@ -105,8 +106,14 @@ export class SudokuComponent {
         confirmButtonColor: '#cd1f1c',
         background: '#dedee0',
         color: "#cd1f1c",
-      }).then(()=> {window.location.reload()});
-    }, 7000);
+      }).then(()=> 
+        {
+          this.puntaje.guardar_partida_jugada('DERROTA', 0).then(() =>
+            {
+              window.location.reload()
+            })
+        });
+    }, 5000);
   }
 
   //ACTUALIZA UN VALOR DE LA TABLA
@@ -149,7 +156,16 @@ export class SudokuComponent {
           confirmButtonColor: '#cd1f1c',
           background: '#cd1f1c',
           color: "#dedee0",
-        }).then(()=> {window.location.reload()});
+        }).then(() => 
+          { 
+            this.puntaje.guardar_puntaje(this.puntos, [0,0,0,this.puntos]).then(() => 
+            {
+              this.puntaje.guardar_partida_jugada('VICTORIA', this.puntos).then(() =>
+              {
+                window.location.reload()
+              })
+            })
+          });
     }
   }
 
@@ -168,7 +184,13 @@ export class SudokuComponent {
           confirmButtonColor: '#cd1f1c',
           background: '#dedee0',
           color: "#cd1f1c",
-        }).then(()=> {window.location.reload()});
+        }).then(()=> 
+          {
+            this.puntaje.guardar_partida_jugada('DERROTA', 0).then(() =>
+            {
+              window.location.reload()
+            })
+          });
     }
   }
 

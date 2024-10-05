@@ -40,7 +40,7 @@ export class ChatComponent {
   {
     let col = this.authService.get_collection();
 
-    const filtered = query(col,limit(50),orderBy("fecha"));
+    const filtered = query(col,limit(10),orderBy("fecha"));
 
     const observable = collectionData(filtered);
   

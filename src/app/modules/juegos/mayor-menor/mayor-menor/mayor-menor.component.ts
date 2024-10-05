@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { baraja } from './baraja';
+import { PuntajeService } from '../../../../services/puntaje.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -15,7 +16,7 @@ export class MayorMenorComponent {
   public mazo : any[];
   public esperando = true;
 
-  constructor()
+  constructor(private puntaje : PuntajeService)
   {
     this.carta_actual = ["https://firebasestorage.googleapis.com/v0/b/prueba1-7bc74.appspot.com/o/assets%2Fimg%2Fcartas_espa%C3%B1olas%2Freverso.png?alt=media&token=b834902b-c80d-477b-813e-809748ac7260"];
     this.carta_nueva = [];
@@ -80,7 +81,6 @@ export class MayorMenorComponent {
     console.log(this.apuesta);
     this.carta_actual = this.carta_nueva;
     this.carta_nueva = [];
-
   }
 
   correcto()
@@ -98,7 +98,14 @@ export class MayorMenorComponent {
           confirmButtonColor: '#256fa2',
           background: '#f7c548',
           color: "#256fa2",
-        }).then(()=> {window.location.reload()});
+        }).then(() => { 
+            this.puntaje.guardar_puntaje(this.puntos, [0,0,this.puntos,0]).then(() => 
+              {
+                this.puntaje.guardar_partida_jugada('VICTORIA', this.puntos).then(() =>
+                  {
+                    window.location.reload()
+                  })
+              }) });
     }
     else
     {
@@ -132,7 +139,13 @@ export class MayorMenorComponent {
           confirmButtonColor: '#f7c548',
           background: '#F2573C',
           color: "#f7c548",
-        }).then(()=> {window.location.reload()});
+        }).then(()=> 
+          {
+            this.puntaje.guardar_partida_jugada('DERROTA', this.puntos).then(() =>
+              {
+                window.location.reload()
+              })
+          });
     }
     else
     {
