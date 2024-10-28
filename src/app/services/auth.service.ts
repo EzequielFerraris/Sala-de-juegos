@@ -1,6 +1,6 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Auth, signOut, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged } from '@angular/fire/auth';
+import { Auth, signOut, signInWithEmailAndPassword, createUserWithEmailAndPassword } from '@angular/fire/auth';
 import { addDoc, collection, Firestore } from '@angular/fire/firestore';
 import Swal from 'sweetalert2';
 
@@ -17,10 +17,7 @@ export class AuthService implements OnInit{
     
   }
   
-  ngOnInit()
-  {
-    
-  }
+  ngOnInit(){ }
 
   get_user() 
   {

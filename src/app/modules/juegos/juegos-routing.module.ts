@@ -5,6 +5,7 @@ import { MayorMenorComponent } from './mayor-menor/mayor-menor/mayor-menor.compo
 import { PreguntadosComponent } from './preguntados/preguntados/preguntados.component';
 import { SudokuComponent } from './sudoku/sudoku.component';
 
+
 const routes: Routes = [
   {
     path: 'ahorcado',
